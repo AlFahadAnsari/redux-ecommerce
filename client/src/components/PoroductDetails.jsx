@@ -36,7 +36,7 @@ const ProductDetails = () => {
                     <p className="text-sm text-gray-600">Category: {details.category}</p>
                     <button
                         className="btn btn-secondary btn-sm my-5"
-                        onClick={() => handleAdd(details)}
+                        onClick={() => handleAdd(product)}
                     >
                         Add to Cart
                     </button>
