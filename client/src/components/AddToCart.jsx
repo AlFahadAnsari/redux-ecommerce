@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../redux/CartSlice';
-import { Link } from 'react-router-dom'; // Import Link if you haven't already
+import { Link } from 'react-router-dom'; 
+import toast from 'react-hot-toast';
+
 
 const AddToCart = () => {
     const dispatch = useDispatch();
@@ -9,10 +11,15 @@ const AddToCart = () => {
 
     const handleRemove = (id) => {
         dispatch(remove(id));
+        toast.success('Item Remove Successful');  
+
+        
     }
 
     const handleClearCart = () => {
         cartItems.forEach(item => dispatch(remove(item.id)));
+        toast.success('All Items Remove');  
+
     }
 
     return (

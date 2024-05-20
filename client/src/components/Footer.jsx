@@ -2,12 +2,15 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 const Footer = () => {
-  let location =useLocation()
+  let location = useLocation();
+
+  const shouldHideFooter = location.pathname === '/cart' || location.pathname.startsWith('/product');
   return (
     <div>
-
+x
       {
-        location.pathname !== '/cart' &&(
+        
+        !shouldHideFooter && (
 
           <footer className="footer footer-center p-10 bg-slate-600 text-white rounded">
           <nav className="grid grid-flow-col gap-4">

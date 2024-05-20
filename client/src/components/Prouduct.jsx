@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { add } from '../redux/CartSlice';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const Product = () => {
     const [products, setProducts] = useState([]);
@@ -22,16 +23,18 @@ const Product = () => {
 
     const handleAdd = (item) => {
         dispatch(add(item));
-        toast.success('item added');  
+        toast.success('item added');
     };
 
     return (
         <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-5 p-5">
                 {products.map((product) => (
-                    <div key={product.id} className="card bg-base-100 shadow-xl mx-4 my-4 rounded-md overflow-hidden">
+                    <div key={product.id} className="card bg-base-100 shadow-xl mx-4 my-4 rounded-md overflow-hidden ">
                         <figure className="relative">
-                            <img src={product.image} alt={product.title} className="h-48 w-full " id='proImg' />
+                            <Link to={`/product/${product.id}`}>
+                                <img src={product.image} alt={product.title} className="h-48 w-full object-contain p-2" id='proImg' />
+                            </Link>
                             <div className="absolute top-0 right-0 bg-red-500 text-white py-1 px-2 rounded-bl">
                                 <span>NEW</span>
                             </div>
