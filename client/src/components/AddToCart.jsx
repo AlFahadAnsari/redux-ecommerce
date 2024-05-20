@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../redux/CartSlice';
 import { Link } from 'react-router-dom'; // Import Link if you haven't already
+import toast from 'react-hot-toast';
 
 const AddToCart = () => {
     const dispatch = useDispatch();
@@ -9,6 +10,7 @@ const AddToCart = () => {
 
     const handleRemove = (id) => {
         dispatch(remove(id));
+           toast.success('item Remove Successful');  
     }
 
     const handleClearCart = () => {
