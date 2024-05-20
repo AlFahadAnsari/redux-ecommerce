@@ -31,7 +31,7 @@ const Product = () => {
                 {products.map((product) => (
                     <div key={product.id} className="card bg-base-100 shadow-xl mx-4 my-4 rounded-md overflow-hidden">
                         <figure className="relative">
-                            <img src={product.image} alt={product.title} className="h-48 w-full object-center p-4" />
+                            <img src={product.image} alt={product.title} className="h-48 w-full " id='proImg' />
                             <div className="absolute top-0 right-0 bg-red-500 text-white py-1 px-2 rounded-bl">
                                 <span>NEW</span>
                             </div>
