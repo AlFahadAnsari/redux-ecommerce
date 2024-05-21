@@ -11,7 +11,8 @@ const Navbar = () => {
         <div className=''>
             <div className="navbar bg-slate-500 rounded-lg p-4 text-white md:px-28">
                 <div className="flex-1">
-                    <Link to={'/'} className="btn btn-ghost text-xl">Alfahad Ansari</Link>
+                <Link to={'/'} class="fa-solid fa-house hover:bg-slate-700 p-4 rounded-lg"></Link>
+                    <h1 className=" mx-8 disabled text-xl">Alfahad Ansari</h1>
                 </div>
                 <div className="flex-none">
                     <div className="dropdown dropdown-end">
