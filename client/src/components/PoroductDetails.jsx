@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const ProductDetails = () => {
     const { id } = useParams();
-    const [details, setDetails] = useState({});
+    const [details, setDetails] = useState(null);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -18,15 +18,15 @@ const ProductDetails = () => {
         fetchProduct();
     }, [id]);
 
-
-    let handleAdd = () => {
-
-    }
+    const handleAdd = (product) => {
+        console.log('Adding to cart:', product);
+    
+    };
 
     return (
         <div className="container mx-auto p-4">
             {details ? (
-                <div className="product-details bg-white shadow-md rounded-lg p-6  ">
+                <div className="product-details bg-white shadow-md rounded-lg p-6">
                     <h1 className="text-2xl font-bold mb-4 text-center">{details.title}</h1>
                     <div className="flex justify-center mb-4">
                         <img className="w-auto h-52 rounded" src={details.image} alt={details.title} />
@@ -36,7 +36,7 @@ const ProductDetails = () => {
                     <p className="text-sm text-gray-600">Category: {details.category}</p>
                     <button
                         className="btn btn-secondary btn-sm my-5"
-                        onClick={() => handleAdd(product)}
+                        onClick={() => handleAdd(details)}
                     >
                         Add to Cart
                     </button>

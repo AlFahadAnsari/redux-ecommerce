@@ -1,7 +1,8 @@
-const express = require('express')
-let app=express()
-let cors = require('cors')
-const { default: mongoose } = require('mongoose')
+import express from 'express'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import userrouter from './routes/user.router.js'
+const app = express();
 let port =3000
 
 
@@ -15,5 +16,10 @@ try {
    } catch (error) {
       console.log('error',error);
    }
+
+
+
+   app.use('/signup',userrouter)
+
 
 app.listen(port, ()=>{console.log(`port run on ${port}`);})
