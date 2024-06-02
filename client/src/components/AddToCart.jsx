@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../redux/CartSlice';
 import { Link } from 'react-router-dom'; // Import Link if you haven't already
 import toast from 'react-hot-toast';
+import Navbar from './Navbar';
 
 const AddToCart = () => {
     const dispatch = useDispatch();
@@ -18,6 +19,12 @@ const AddToCart = () => {
     }
 
     return (
+
+        <>
+
+        <div>
+            <Navbar></Navbar>
+        </div>
         <div className="flex flex-col items-center justify-center mt-8">
             {
                 cartItems.length === 0 ? (
@@ -52,6 +59,7 @@ const AddToCart = () => {
                 )
             }
         </div>
+        </>
     )
 }
 

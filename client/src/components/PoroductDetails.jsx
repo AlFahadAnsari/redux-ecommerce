@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from './Navbar';
 
 const ProductDetails = () => {
     const { id } = useParams();
-    const [details, setDetails] = useState(null);
+    const [details, setDetails] = useState([]);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -24,6 +25,13 @@ const ProductDetails = () => {
     };
 
     return (
+
+       <>
+    <div>
+        <Navbar/>
+    </div>
+
+
         <div className="container mx-auto p-4">
             {details ? (
                 <div className="product-details bg-white shadow-md rounded-lg p-6">
@@ -45,6 +53,7 @@ const ProductDetails = () => {
                 <p className="text-center text-lg">Loading...</p>
             )}
         </div>
+        </>
     );
 }
 
