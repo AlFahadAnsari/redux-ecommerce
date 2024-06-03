@@ -1,22 +1,38 @@
 import React from "react";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import axios from 'axios'
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  const onSubmit = (data)=>{
-    console.log(data);
-  }
-    reset();
-    toast.success("Form submitted successfully!");
+  const onSubmit = async (data) => {
+    const userInfo = {
+      fullname: data.fullname,
+      email: data.email,
+      password: data.password,
+    };
 
+    try {
+      const res = await axios.post('http://localhost:3000/user/signup', userInfo);
+      if (res.data) {
+        toast.success('Signup Successful');
+        localStorage.setItem('user', JSON.stringify(res.data));
+        reset();
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
+      }
+    } catch (err) {
+      if (err.response) {
+        toast.error("Error: " + err.response.data.message);
+      } else {
+        toast.error("An unexpected error occurred");
+      }
+    }
+  };
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
@@ -25,7 +41,6 @@ const Signup = () => {
           Signup
         </h2>
 
-        
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="w-full mb-4">
             <label htmlFor="fullname" className="block mb-1 font-semibold">
@@ -33,14 +48,14 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              id="name"
+              id="fullname"
               placeholder="Enter your Fullname"
               className="w-full p-2 border border-gray-300 rounded"
               {...register("fullname", { required: "Name is required" })}
             />
-            {errors.name && (
+            {errors.fullname && (
               <span className="text-md text-red-600">
-                {errors.name.message}
+                {errors.fullname.message}
               </span>
             )}
           </div>
@@ -65,34 +80,6 @@ const Signup = () => {
             {errors.email && (
               <span className="text-md text-red-600">
                 {errors.email.message}
-              </span>
-            )}
-          </div>
-
-          <div className="w-full mb-4">
-            <label htmlFor="number" className="block mb-1 font-semibold">
-              Number
-            </label>
-            <input
-              type="text"
-              id="number"
-              placeholder="Enter your number"
-              className="w-full p-2 border border-gray-300 rounded"
-              {...register("number", {
-                required: "Number is required",
-                minLength: {
-                  value: 10,
-                  message: "Number must be at least 10 digits long",
-                },
-                maxLength: {
-                  value: 15,
-                  message: "Number must be no more than 15 digits long",
-                },
-              })}
-            />
-            {errors.number && (
-              <span className="text-md text-red-600">
-                {errors.number.message}
               </span>
             )}
           </div>

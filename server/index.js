@@ -11,15 +11,13 @@ app.use(express.json())
 
 
 try {
-    mongoose.connect("mongodb+srv://ansari:alfahad@practice.0osi4ns.mongodb.net/Ecom-redux")
+    mongoose.connect("mongodb+srv://alfahad:ansari@e-com-redux.lc4u9op.mongodb.net/Ecom-redux")
     console.log('connect hogya hai');
    } catch (error) {
       console.log('error',error);
    }
 
-
-
-   app.use('/signup',userrouter)
+   app.use('/user',userrouter)
 
 
 app.listen(port, ()=>{console.log(`port run on ${port}`);})
