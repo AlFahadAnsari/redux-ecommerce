@@ -44,7 +44,7 @@ const Navbar = () => {
           to="/"
           className="fa-solid fa-house hover:bg-slate-700 p-4 rounded-lg"
         ></Link>
-        {isWideScreen && <h1 className="mx-8 text-xl">Alfahad Ansari</h1>}
+        {isWideScreen && <h1 className="mx-3 text-xl">Alfahad Ansari</h1>}
       </div>
       <div className="flex-none flex items-center">
         <div className="dropdown dropdown-end">
