@@ -16,7 +16,7 @@ const Signup = () => {
     };
 
     try {
-      const res = await axios.post('http://localhost:3000/user/signup', userInfo);
+      const res = await axios.post('https://e-commerce-three-beta.vercel.app/user/signup', userInfo);
       if (res.data) {
         toast.success('Signup Successful');
         localStorage.setItem('user', JSON.stringify(res.data));
